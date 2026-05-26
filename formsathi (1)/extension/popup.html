@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FormSathi Extension</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="header">
+        <h2 style="color: #3B66F5; font-weight: 900; margin: 0; padding-bottom: 8px;">FormSathi</h2>
+      </div>
+      <div id="content">
+        <p id="status-msg">Checking authentication...</p>
+        <button id="login-btn" style="display: none;">Login to FormSathi</button>
+        <div id="user-info" style="display: none;">
+          <p id="user-email"></p>
+          <button id="check-form-btn">Check Current Form</button>
+        </div>
+      </div>
+      <div id="results" style="display: none; margin-top: 15px;">
+        <h4 style="margin: 0 0 5px 0;">Validation Results</h4>
+        <ul id="errors-list"></ul>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

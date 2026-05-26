@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "FormSathi AI Assistant",
+  "version": "1.0",
+  "description": "Real-time AI form checking against your verified FormSathi profile.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}

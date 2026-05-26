@@ -1,0 +1,6 @@
+{
+  "name": "FormSathi",
+  "description": "A secure document wallet, verified profile, and form checker tool for Indian students and job seekers.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

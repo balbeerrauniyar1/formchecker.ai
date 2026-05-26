@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the SizerSathi application.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique identifier for the user (Auth UID)." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "fullName": { "type": "string", "description": "The user's full name." },
+        "isVerified": { "type": "boolean", "description": "Whether the user's email is verified." },
+        "verificationCode": { "type": "string" },
+        "googleUser": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "email", "createdAt", "updatedAt"]
+    },
+    "UploadedDocument": {
+      "title": "UploadedDocument",
+      "description": "A document uploaded by a user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The document's unique identifier." },
+        "userId": { "type": "string", "description": "The ID of the user who owns the document." },
+        "type": { "type": "string", "description": "The type of document (e.g., Aadhaar Card, PAN Card, Photo, Signature)." },
+        "fileName": { "type": "string", "description": "The name of the uploaded file." },
+        "fileSize": { "type": "string", "description": "The size of the uploaded file." },
+        "uploadDate": { "type": "string", "description": "The date the file was uploaded." },
+        "fileData": { "type": "string", "description": "The base64 encoded file data." },
+        "mimeType": { "type": "string", "description": "The mime type of the file." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "type", "fileName", "fileData", "createdAt"]
+    },
+    "VerifiedProfile": {
+      "title": "VerifiedProfile",
+      "description": "A verified profile of a user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user." },
+        "fullName": { "type": "string", "description": "The full name of the user." },
+        "dateOfBirth": { "type": "string", "description": "The date of birth of the user." },
+        "fatherName": { "type": "string", "description": "The father's name of the user." },
+        "aadhaarNumber": { "type": "string", "description": "The Aadhaar number of the user." },
+        "panNumber": { "type": "string", "description": "The PAN number of the user." },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "fullName", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "The collection of users. Indexed by user ID."
+    },
+    "/users/{userId}/documents/{documentId}": {
+      "schema": { "$ref": "#/entities/UploadedDocument" },
+      "description": "Documents owned by a user."
+    },
+    "/users/{userId}/profile/verified": {
+      "schema": { "$ref": "#/entities/VerifiedProfile" },
+      "description": "The verified profile of the user."
+    }
+  }
+}
